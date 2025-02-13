@@ -27,6 +27,21 @@ function heartFlakes() {
       heartContainer.appendChild(heart);
     }
   }
+  
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const audio = document.getElementById("backgroundMusic");
+
+    // Try to play automatically (might be blocked)
+    audio.play().catch(() => {
+        console.log("Autoplay was prevented, waiting for user interaction...");
+    });
+
+    // Play audio when user clicks anywhere
+    document.body.addEventListener("click", () => {
+        audio.play();
+    }, { once: true }); // Ensures it runs only once
+});
 
   // Start the snowflakes animation
   heartFlakes();
